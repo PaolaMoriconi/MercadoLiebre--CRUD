@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head', {title: 'Inicio'}) %>
+<body>
+    <%- include('./partials/headerNavbar') %>
+    <div class="banner"></div>
+    <!-- /Banner -->
+
+    <!-- ultima visita -->
+    <div class="container products-wrapper">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="products-title">Basado en tu última visita</h2>
+        </div>
+        <!-- Show the "visited" products -->
+        <% productsVisited.forEach(product =>{ %> 
+			<%-include('./partials/cardProduct', {product}) %> 
+		<% }) %>
+      </div>
+    </div>
+    <div class="container products-wrapper">
+        <div class="row">
+          <div class="col-12">
+            <h2 class="products-title">Ofertas</h2>
+          </div>
+          <!-- Show the "in-sale" products -->
+          <% products.filter(product => product.category ===
+          "in-sale").forEach(product => { %> 
+              <%- include('./partials/cardProduct',{product,toThousand}) %> 
+          <% }) %>
+        </div>
+      </div>
+ <!-- footer -->
+ <%- include('./partials/footer') %>
+ <!-- /footer -->
+</body>
+</html>
